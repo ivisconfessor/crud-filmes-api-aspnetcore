@@ -1,3 +1,6 @@
+using crud_filmes_api_aspnetcore.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace crud_filmes_api_aspnetcore
 {
     public class Startup
@@ -11,6 +14,9 @@ namespace crud_filmes_api_aspnetcore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //Minhas Configurações
+            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDB")));
+
             // Add services to the container.
 
             services.AddControllers();
