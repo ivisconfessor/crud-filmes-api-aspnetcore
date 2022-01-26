@@ -6,11 +6,11 @@ namespace crud_filmes_api_aspnetcore.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MovieController : ControllerBase
+    public class MoviesController : ControllerBase
     {
         private readonly Context _context;
 
-        public MovieController(Context context)
+        public MoviesController(Context context)
         {
             _context = context;
         }
@@ -21,7 +21,7 @@ namespace crud_filmes_api_aspnetcore.Controllers
             return await _context.Movies.ToListAsync();
         }
 
-        [HttpGet()]
+        [HttpGet("{idMovie}")]
         public async Task<ActionResult<Movie>> GetMovie(int idMovie) 
         {
             Movie movie = await _context.Movies.FindAsync(idMovie);
