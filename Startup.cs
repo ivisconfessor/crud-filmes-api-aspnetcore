@@ -17,6 +17,8 @@ namespace crud_filmes_api_aspnetcore
             //Minhas Configurações
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDB")));
 
+            services.AddCors();
+
             // Add services to the container.
 
             services.AddControllers();
@@ -35,6 +37,8 @@ namespace crud_filmes_api_aspnetcore
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 
