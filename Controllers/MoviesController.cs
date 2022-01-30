@@ -50,7 +50,7 @@ namespace crud_filmes_api_aspnetcore.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{idMovie}")]
         public async Task<ActionResult> DeleteMovie(int idMovie)
         {
             Movie movie = await _context.Movies.FindAsync(idMovie);
